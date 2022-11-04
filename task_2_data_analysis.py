@@ -37,9 +37,7 @@ def normalize_series(data,min,max):
     Returns:
         numpy.ndarray: normalized series
     """
-    data = data - min
-    data = data / max
-    return data
+    return (data - min)/max
 
 def unnormalize_series(data,min,max):
     """ Function to unnormalize data columnwise (in real case scenarios showing a
@@ -53,9 +51,7 @@ def unnormalize_series(data,min,max):
     Returns:
         numpy.ndarray: normalized series
     """
-    data = data * max
-    data = data + min
-    return data
+    return (data * max) + min
 
 def windowed_dataset(series, batch_size, n_past, n_future, shift=1):
     """ Function to:
