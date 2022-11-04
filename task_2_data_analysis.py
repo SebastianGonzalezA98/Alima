@@ -208,6 +208,6 @@ def main(N):
     return model
 
 if __name__ == '__main__':
-    N = 15
+    N = int(input("Enter number of days to estimate future avocado maximum and minimum price. "))
     model = main(N)
     model.save("avocado_predictor.h5")
