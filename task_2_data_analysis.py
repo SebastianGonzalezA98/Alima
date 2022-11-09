@@ -7,7 +7,7 @@ import json
 import sys
 
 def plot_metrics(history, string):
-    """ Function to plot training and validation metrics per epoch
+    """ Function to plot training and validation metrics per epoch.
 
     Args:
         history (keras.engine.sequential.Sequential): keras' model.history
@@ -21,13 +21,23 @@ def plot_metrics(history, string):
     plt.show()
 
 def plot_series(time, series, ylabel ,format="-", start=0, end=None):
+    """ Function to plot time series.
+
+    Args:
+        time (numpy.ndarray): time variable
+        series (numpy.ndarray): series values
+        ylabel (str): y label string
+        format (str, optional): _description_. Defaults to "-".
+        start (int, optional): _description_. Defaults to 0.
+        end (_type_, optional): _description_. Defaults to None.
+    """
     plt.plot(time[start:end], series[start:end], format)
     plt.xlabel("Time")
     plt.ylabel(ylabel)
     plt.grid(True)
 
 def normalize_series(data,min,max):
-    """ Function to normalize data columnwise
+    """ Function to normalize data columnwise.
 
     Args:
         data (numpy.ndarray): numpy array dataframe
@@ -41,7 +51,7 @@ def normalize_series(data,min,max):
 
 def unnormalize_series(data,min,max):
     """ Function to unnormalize data columnwise (in real case scenarios showing a
-        price between 0 and 1 is not practical)
+        price between 0 and 1 is not practical).
 
     Args:
         data (numpy.ndarray): numpy array dataframe
@@ -62,11 +72,11 @@ def windowed_dataset(series, batch_size, n_past, n_future, shift=1):
         - batch the data
 
     Args:
-        series (_type_): _description_
-        batch_size (_type_): _description_
-        n_past (_type_): _description_
-        n_future (_type_): _description_
-        shift (int, optional): _description_. Defaults to 1.
+        series (numpy.ndarray): series
+        batch_size (int): number of examples used in one iteration
+        n_past (int): number of past time steps based on which future observations should be predicted
+        n_future (int): number of future time steps based on which future observations should be predicted
+        shift (int, optional): positions from which the window slides to create a new window, defaults to 1
 
     Returns:
         _type_: _description_
