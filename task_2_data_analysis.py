@@ -196,6 +196,7 @@ def main(N):
             w_start_set = windowed_dataset(series = temp_arr[-2:], batch_size = BATCH_SIZE,
                                            n_past = N_PAST, n_future = N_FUTURE,
                                            shift = 1)
+            starting_data = temp_arr
         else:
             future_pred = history.model.predict(w_start_set)
             future_pred = future_pred.reshape(future_pred.shape[0],-1)

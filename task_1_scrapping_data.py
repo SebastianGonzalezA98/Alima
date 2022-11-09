@@ -45,7 +45,10 @@ def create_urls(start_date,end_date):
 
     # Create urls
     for date in labor_days:
-        day = date.split('-')[2].replace('0','')
+        if len(date.split('-')[2]) > 1:
+            day = date.split('-')[2]
+        else:
+            day = date.split('-')[2].replace('0','')
         month = date.split('-')[1]
         year = date.split('-')[0]
         urls_list.append(f'http://www.economia-sniim.gob.mx/Consolidados.asp?prod=&punto=100&edo=&dqdia={day}&dqmes={month}&dqanio={year}&aqdia={day}&aqmes={month}&aqanio={year}')
